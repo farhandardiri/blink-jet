@@ -1,3 +1,7 @@
+@php
+ $prefix = Request::route()->getPrefix();
+ $route = Route::current()->getName();
+@endphp
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -23,7 +27,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
+        <li class="nav-item has-treeview {{ ($prefix=='test')?'menu-open': '' }}">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
@@ -34,7 +38,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="pages/layout/top-nav.html" class="nav-link">
+              <a href="{{ route('name') }}" class="nav-link {{ ($route=='name')?'active':'' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Top Navigation</p>
               </a>
