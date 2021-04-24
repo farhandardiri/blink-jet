@@ -29,17 +29,24 @@
                         <h3>Give Infromation</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="{{ route('store.information') }}" enctype="multipart/form-data">
+                            @csrf
                             <div class="form-row">
-                              <div class="form-group col-md-6">
-                                <input type="text" class="form-control" placeholder="First name">
+                              <div class="form-group col-md-4">
+                                  <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="name">
                               </div>
-                              <div class="form-group col-md-6">
-                                <input type="text" class="form-control" placeholder="Last name">
+                              <div class="form-group col-md-5">
+                                  <label for="">Address</label>
+                                <input type="text" class="form-control" name="address" placeholder="Address">
                               </div>
 
-                              <div class="form-group col-md-6">
-                                <input type="file" class="form-control" placeholder="Last name">
+                              <div class="form-group col-md-4">
+                                  <label for="">Image</label>
+                                <input type="file" name="image" class="form-control" id="image">
+                              </div>
+                              <div class="form-group col-md-4">
+                                  <img src="" id="showImage" alt="" style="width: 150px; height: 160px; border:1px solid #000;">
                               </div>
 
                             </div>

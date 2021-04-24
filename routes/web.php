@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\informationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,11 @@ Route::prefix('test')->group(function () {
     Route::get('/name', function () {
         return view('name');
     })->name('name');
+
     Route::get('/name2', function () {
         return view('name2');
     })->name('name2');
+
+    Route::get('view', [informationController::class, 'view'])->name('view.information');
+    Route::post('store', [informationController::class, 'store'])->name('store.information');
 });
