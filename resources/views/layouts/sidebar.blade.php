@@ -40,7 +40,7 @@
             <li class="nav-item">
               <a href="{{ route('name') }}" class="nav-link {{ ($route=='name')?'active':'' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Top Navigation</p>
+                <p>Test1</p>
               </a>
             </li>
             <li class="nav-item">

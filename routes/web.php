@@ -24,5 +24,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::prefix('test')->group(function () {
 
     Route::get('/name', function () {
+        return view('name');
     })->name('name');
 });
