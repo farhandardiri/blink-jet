@@ -11,9 +11,7 @@
 
                 <!-- /.row -->
 
-            </section>
-            <!-- /.content -->
-          </div>
+
     </x-slot>
 
 </x-app-layout>

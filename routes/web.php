@@ -26,4 +26,7 @@ Route::prefix('test')->group(function () {
     Route::get('/name', function () {
         return view('name');
     })->name('name');
+    Route::get('/name2', function () {
+        return view('name2');
+    })->name('name2');
 });
