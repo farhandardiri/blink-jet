@@ -5,7 +5,7 @@
 
             <!-- Main content -->
 
-                        <h2>Test open</h2>
+                        <h2>Test1 open</h2>
 
                   <!-- /.col -->
 
