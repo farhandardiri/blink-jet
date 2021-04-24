@@ -17,7 +17,7 @@ class CreateInformationTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

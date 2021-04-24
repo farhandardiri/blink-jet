@@ -24,6 +24,8 @@
   <link rel="stylesheet" href={{ asset("dist/css/adminlte.min.css") }}>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  {{-- toaster --}}
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
@@ -113,6 +115,29 @@ $(document).ready(function(){
         reader.readAsDataURL(e.target.files['0']);
     });
 });
+</script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type', 'info') }}";
+    switch(type){
+        case 'info':
+            toastr.info("{{ Session::get('message') }}");
+            break;
+
+        case 'warning':
+        toastr.warning("{{ Session::get('message') }}");
+            break;
+
+        case 'success':
+        toastr.success("{{ Session::get('message') }}");
+            break;
+
+        case 'error':
+        toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+    @endif
 </script>
 </body>
 </html>

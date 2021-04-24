@@ -32,17 +32,18 @@
                         <form method="POST" action="{{ route('store.information') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-row">
-                              <div class="form-group col-md-4">
-                                  <label for="">Name</label>
+
+                              <div class="form-group col-md-5">
+                                  <lavel>Name</lavel>
                                 <input type="text" class="form-control" name="name" placeholder="name">
                               </div>
                               <div class="form-group col-md-5">
-                                  <label for="">Address</label>
+                                  <lavel>Address</lavel>
                                 <input type="text" class="form-control" name="address" placeholder="Address">
                               </div>
 
                               <div class="form-group col-md-4">
-                                  <label for="">Image</label>
+                                  <lavel>Image</lavel>
                                 <input type="file" name="image" class="form-control" id="image">
                               </div>
                               <div class="form-group col-md-4">

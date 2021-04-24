@@ -25,6 +25,11 @@ class informationController extends Controller
             $data['image'] = $imagename;
         }
         $data->save();
-        return back();
+
+        $notification = array(
+            'message' => 'Data Inserted Successfully',
+            'alert-type' => 'success'
+        );
+        return back()->with($notification);
     }
 }
