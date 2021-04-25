@@ -34,6 +34,7 @@ class informationController extends Controller
     }
     public function view()
     {
-        return view('information-view');
+        $allData = information::all();
+        return view('information-view', compact('allData'));
     }
 }
