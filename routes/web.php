@@ -28,4 +28,5 @@ Route::prefix('information')->group(function () {
     Route::get('view', [informationController::class, 'view'])->name('view.information');
     Route::get('add', [informationController::class, 'add'])->name('add.information');
     Route::post('store', [informationController::class, 'store'])->name('store.information');
+    Route::get('delete/{id}', [informationController::class, 'delete'])->name('delete.information');
 });

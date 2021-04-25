@@ -30,11 +30,24 @@ class informationController extends Controller
             'message' => 'Data Inserted Successfully',
             'alert-type' => 'success'
         );
-        return back()->with($notification);
+        return redirect()->route('view.information')->with($notification);
     }
+
     public function view()
     {
         $allData = information::all();
         return view('information-view', compact('allData'));
+    }
+
+    public function delete($id)
+    {
+        $data = information::find($id);
+        @unlink(public_path('upload/' . $data->image));
+        $data->delete();
+        $notification = array(
+            'message' => 'Data Deleted Successfully',
+            'alert-type' => 'warning'
+        );
+        return back()->with($notification);
     }
 }

@@ -27,7 +27,7 @@
                   <div class="card-header">
                       <h3>
                           Project List
-                          <a class="btn btn-success float-right btn-sm" href=""><i class="fa fa-list">Add</i></a>
+                          <a class="btn btn-success float-right btn-sm" href="{{ route('add.information') }}"><i class="fa fa-list"> Add</i></a>
                       </h3>
                   </div>
 
@@ -35,11 +35,11 @@
                       <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                                <th style="font-size: 12px">S1. No</th>
-                                <th style="font-size: 12px">Name</th>
-                                <th style="font-size: 12px">Address</th>
-                                <th style="font-size: 12px">Image</th>
-                                <th style="font-size: 12px">Action</th>
+                                <th style="font-size: 12px; text-align: center;">No</th>
+                                <th style="font-size: 12px; text-align: center;">Name</th>
+                                <th style="font-size: 12px; text-align: center;">Address</th>
+                                <th style="font-size: 12px; text-align: center;">Image</th>
+                                <th style="font-size: 12px; text-align: center;">Action</th>
                             </tr>
                         </thead>
 
@@ -48,9 +48,12 @@
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->address }}</td>
-                                <td><a href="{{ (!empty($data->image))?url('upload'.$data->image):url('upload/no_images.png') }}"> <img src="{{ (!empty($data->image))?url('upload/'.$data->image):url('upload/no_images.png') }}"
+                                <td><a href="{{ (!empty($data->image))?url('upload/'.$data->image):url('upload/no_image.png') }}"> <img src="{{ (!empty($data->image))?url('upload/'.$data->image):url('upload/no_image.png') }}"
                                     style="width: 100px; height: 90px; border: 1px solid #000" alt=""></a></td>
-                                <td>5</td>
+                                <td>
+                                    <a title="Edit" class="btn btn-sm btn-primary" href="">Edit</a>
+                                    <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.information', $data->id) }}">Delete</a>
+                                </td>
                             </tr>
                         @endforeach
 

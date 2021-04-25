@@ -30,6 +30,8 @@
   <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  {{-- Sweet alert --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
@@ -125,6 +127,7 @@ $(document).ready(function(){
 } );
 </script>
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
 <script>
     @if(Session::has('message'))
     var type = "{{ Session::get('alert-type', 'info') }}";
@@ -146,6 +149,32 @@ $(document).ready(function(){
             break;
     }
     @endif
+</script>
+<script type="text/javascript">
+$(function(){
+    $(document).on('click', '#delete', function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+        Swal.fire({
+            title: 'Are you sure ?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result)=>{
+            if(result.value){
+                window.location.href = link;
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+    });
+});
 </script>
 </body>
 </html>
