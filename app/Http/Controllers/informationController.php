@@ -7,9 +7,9 @@ use App\Models\information;
 
 class informationController extends Controller
 {
-    public function view()
+    public function add()
     {
-        return view('name');
+        return view('informationadd');
     }
 
     public function store(Request $request)
@@ -31,5 +31,9 @@ class informationController extends Controller
             'alert-type' => 'success'
         );
         return back()->with($notification);
+    }
+    public function view()
+    {
+        return view('information-view');
     }
 }

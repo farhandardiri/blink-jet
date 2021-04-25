@@ -5,9 +5,7 @@
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-      </div>
+
       <div class="info">
         <a href="#" class="d-block">{{ Auth::user()->name }}</a>
       </div>
@@ -27,7 +25,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview {{ ($prefix=='/test')?'menu-open': '' }}">
+        <li class="nav-item has-treeview {{ ($prefix=='/information')?'menu-open': '' }}">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-copy"></i>
             <p>
@@ -38,17 +36,12 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('name') }}" class="nav-link {{ ($route=='name')?'active':'' }}">
+              <a href="{{ route('view.information') }}" class="nav-link {{ ($route=='view.information')?'active':'' }}">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Test1</p>
+                <p>information</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{ route('name2') }}" class="nav-link {{ ($route=='name2')?'active':'' }}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Test2</p>
-              </a>
-            </li>
+
 
           </ul>
         </li>

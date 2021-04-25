@@ -22,16 +22,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::prefix('test')->group(function () {
+Route::prefix('information')->group(function () {
 
-    Route::get('/name', function () {
-        return view('name');
-    })->name('name');
-
-    Route::get('/name2', function () {
-        return view('name2');
-    })->name('name2');
 
     Route::get('view', [informationController::class, 'view'])->name('view.information');
+    Route::get('add', [informationController::class, 'add'])->name('add.information');
     Route::post('store', [informationController::class, 'store'])->name('store.information');
 });
