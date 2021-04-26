@@ -10,7 +10,7 @@
                           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                         </li>
                     </ul>
-                  <h1 class="m-0 text-dark">Insert Infromation</h1>
+                  <h1 class="m-0 text-dark">Insert Information</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
@@ -51,7 +51,7 @@
                                 <td><a href="{{ (!empty($data->image))?url('upload/'.$data->image):url('upload/no_image.png') }}"> <img src="{{ (!empty($data->image))?url('upload/'.$data->image):url('upload/no_image.png') }}"
                                     style="width: 100px; height: 90px; border: 1px solid #000" alt=""></a></td>
                                 <td>
-                                    <a title="Edit" class="btn btn-sm btn-primary" href="">Edit</a>
+                                    <a title="Edit" class="btn btn-sm btn-primary" href="{{ route('edit.information',$data->id) }}">Edit</a>
                                     <a title="Delete" id="delete" class="btn btn-sm btn-danger" href="{{ route('delete.information', $data->id) }}">Delete</a>
                                 </td>
                             </tr>

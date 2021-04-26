@@ -10,7 +10,13 @@
                           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                         </li>
                     </ul>
-                  <h1 class="m-0 text-dark">Insert Infromation</h1>
+                  <h1 class="m-0 text-dark">
+                    @if(isset($editData))
+                    Edit Information
+                    @else
+                    Add Infromation
+                    @endif
+                  </h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                   <ol class="breadcrumb float-sm-right">
@@ -29,17 +35,17 @@
                         <h3>Give Infromation</h3>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('store.information') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{(@$editData)?route('update.information', $editData->id): route('store.information') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-row">
 
                               <div class="form-group col-md-5">
                                   <lavel>Name</lavel>
-                                <input type="text" class="form-control" name="name" placeholder="name">
+                                <input type="text" class="form-control" value="{{ @$editData->name }}" name="name" placeholder="name">
                               </div>
                               <div class="form-group col-md-5">
                                   <lavel>Address</lavel>
-                                <input type="text" class="form-control" name="address" placeholder="Address">
+                                <input type="text" class="form-control" value="{{ @$editData->address }}" name="address" placeholder="Address">
                               </div>
 
                               <div class="form-group col-md-4">
@@ -47,11 +53,11 @@
                                 <input type="file" name="image" class="form-control" id="image">
                               </div>
                               <div class="form-group col-md-4">
-                                  <img src="" id="showImage" alt="" style="width: 150px; height: 160px; border:1px solid #000;">
+                                  <img src="{{ !empty($editData->image)?url('upload/'.$editData->image):url('upload/no_image.png') }}" id="showImage" alt="" style="width: 150px; height: 160px; border:1px solid #000;">
                               </div>
 
                             </div>
-                            <button type="submit" class="btn btn-primary"> Submit </button>
+                            <button type="submit" class="btn btn-primary">{{ (@$editData)?'update':'Submit' }} </button>
                           </form>
                     </div>
 

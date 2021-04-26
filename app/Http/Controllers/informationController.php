@@ -50,4 +50,32 @@ class informationController extends Controller
         );
         return back()->with($notification);
     }
+
+    public function edit($id)
+    {
+        $editData = information::where('id', $id)->first();
+        return view('informationadd', compact('editData'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = information::where('id', $id)->first();
+        $data->name = $request->name;
+        $data->address = $request->address;
+
+        if ($request->file('image')) {
+            $image = $request->file('image');
+            @unlink(public_path('upload/' . $data->image));
+            $imagename =  date('YmdHi') . $image->getClientOriginalName();
+            $image->move(public_path('upload'), $imagename);
+            $data['image'] = $imagename;
+        }
+
+        $data->save();
+        $notification = array(
+            'message' => 'Data Updated Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->route('view.information')->with($notification);
+    }
 }

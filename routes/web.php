@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\informationController;
+use App\Http\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +19,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+Route::middleware([Authenticate::class])->group(
+    function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
 
-Route::prefix('information')->group(function () {
+
+        Route::prefix('information')->group(function () {
 
 
-    Route::get('view', [informationController::class, 'view'])->name('view.information');
-    Route::get('add', [informationController::class, 'add'])->name('add.information');
-    Route::post('store', [informationController::class, 'store'])->name('store.information');
-    Route::get('delete/{id}', [informationController::class, 'delete'])->name('delete.information');
-});
+            Route::get('view', [informationController::class, 'view'])->name('view.information');
+            Route::get('add', [informationController::class, 'add'])->name('add.information');
+            Route::post('store', [informationController::class, 'store'])->name('store.information');
+            Route::post('/update/{id}', [informationController::class, 'update'])->name('update.information');
+            Route::get('delete/{id}', [informationController::class, 'delete'])->name('delete.information');
+
+            Route::get('edit/{id}', [informationController::class, 'edit'])->name('edit.information');
+        });
+    }
+);
