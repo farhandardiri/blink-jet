@@ -14,6 +14,10 @@ class informationController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'mimes:jpg,bmp,png'
+        ]);
         $data = new information;
         $data->name = $request->name;
         $data->address = $request->address;

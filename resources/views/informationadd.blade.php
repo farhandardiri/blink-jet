@@ -42,6 +42,7 @@
                               <div class="form-group col-md-5">
                                   <lavel>Name</lavel>
                                 <input type="text" class="form-control" value="{{ @$editData->name }}" name="name" placeholder="name">
+                                <font style="color: red">{{ ($errors->has('name'))?($errors->first('name')):'' }}</font>
                               </div>
                               <div class="form-group col-md-5">
                                   <lavel>Address</lavel>
@@ -51,6 +52,7 @@
                               <div class="form-group col-md-4">
                                   <lavel>Image</lavel>
                                 <input type="file" name="image" class="form-control" id="image">
+                                <font style="color: red">{{ ($errors->has('image'))?($errors->first('image')):'' }}</font>
                               </div>
                               <div class="form-group col-md-4">
                                   <img src="{{ !empty($editData->image)?url('upload/'.$editData->image):url('upload/no_image.png') }}" id="showImage" alt="" style="width: 150px; height: 160px; border:1px solid #000;">
